@@ -1,0 +1,16 @@
+{
+  "name": "EmolgaJs",
+  "version": "1.0.0",
+  "description": "",
+  "main": "bot.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "discord.js": "^12.5.3",
+    "pokedex-promise-v2": "^3.3.2"
+  }
+}
