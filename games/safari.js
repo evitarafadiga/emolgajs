@@ -9,7 +9,8 @@ const Pokedex = require('pokedex-promise-v2');
   timeout: 5 * 1000 // 5s
 }*/
 const P = new Pokedex(/*options*/);
-const POKEMON_AMOUNT = 898
+const POKEMON_AMOUNT = 898;
+const SECONDS = 40;
 
 const getRandomPokemon = () => {
     let id = (Math.random() * POKEMON_AMOUNT) | 0;
@@ -44,24 +45,64 @@ const startCapture = (client, message, onCapture) => {
     client.on('message', valid);
 }
 
-function init(client, message) {
+function init(client, message, safari_type = "default") {
 
+    safari_type = safari_type.toLowerCase();
+
+    let filters = {
+        default: (response) => {
+            return true;
+        },
+        littlecup: (response) => {
+            if(response.base_experience < 100) return true;
+            return false;
+        },
+        notfullyevolved: (response) => {
+            if(response.base_experience > 100 && response.base_experience < 180) return true;
+            return false;
+        },
+        uber: (response) => {
+            if(response.base_experience > 200) return true;
+            return false;
+        },
+        water: (response) => {
+            return response.types.some(type => type.type.name === 'water');
+        },
+        fire: (response) => {
+            return response.types.some(type => type.type.name === 'fire');
+        },
+        grass: (response) => {
+            return response.types.some(type => type.type.name === 'grass');
+        },
+        ghost: (response) => {
+            return response.types.some(type => type.type.name === 'ghost');
+        },
+        poison: (response) => {
+            return response.types.some(type => type.type.name === 'poison');
+        }
+    }
+
+    const filter = filters[safari_type] || filters["default"];
+    console.log(safari_type, filter)
+    
     const attachment = new Discord.MessageEmbed();
-    attachment.setTitle(`Iniciando rota...`);
+    attachment.setTitle(`Iniciando rota ${safari_type}`);
     message.channel.send(attachment);
 
     let amount = 3;
     function fn() {
         if(amount--) {
-            setTimeout(() => {
+            setTimeout(function intern_fn() {
                 getRandomPokemon()
                 .then(response => {
-    
-                    apresentOnChat(response, message);
-                    startCapture(client, message, fn.bind(null, client, message));
-    
+                    if(filter(response)) {
+                        apresentOnChat(response, message);
+                        startCapture(client, message, fn.bind(null, client, message));
+                    } else {
+                        intern_fn();
+                    }
                 }).catch(console.error);
-            }, Math.random() * 2 * 1000);
+            }, Math.random() * SECONDS * 1000);
             
             return fn;
         } else {

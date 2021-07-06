@@ -1,12 +1,8 @@
 const Discord = require ("discord.js")
 
 const Safari = require ("../games/safari.js")
-const SafariLc = require ("../games/safarilittlecup.js")
-const SafariNfe = require ("../games/safarinotfullyevolved.js")
-const SafariUber = require ("../games/safariuber.js")
-const SafariWater = require ("../games/safariwater.js")
-const SafariFire = require ("../games/safarifire.js")
-const SafariGrass = require ("../games/safarigrass.js")
+
+const Banco = require ("../games/banco.js")
 
 const prefix = "!"
 
@@ -29,19 +25,9 @@ async function execute(client, message) {
         client.destroy();
     }
 
-    if(comando === "safarilc") SafariLc.init(client, message);
+    if(comando === "safari") Safari.init(client, message, args[0]);
 
-    if(comando === "safarinfe") SafariNfe.init(client, message);
-
-    if(comando === "safariuber") SafariUber.init(client, message);
-
-    if(comando === "safari") Safari.init(client, message);
-
-    if(comando === "safariwater") SafariWater.init(client, message);
-
-    if(comando === "safarifire") SafariFire.init(client, message);
-
-    if(comando === "safarigrass") SafariGrass.init(client, message);
+    if(comando === 'banco') Banco.create(client, message.channel, message.author);
 
     if (message.content === "rip") {
         // Create the attachment using MessageAttachment
