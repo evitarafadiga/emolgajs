@@ -58,20 +58,19 @@ function init(client, message) {
     let amount = 3;
     function fn() {
         if(amount--) {
+            let _continue = true;
+
             setTimeout(() => {
 
-                let _continue = true;
-
                 while(_continue) {
-                    getRandomPokemon()
-                    .then(response => {
+                    P.getPokemonByName(randomize).then(response => {
                         if (response.base_experience < 150) {
                             _continue = false;
                             apresentOnChat(response, message);
                             startCapture(client, message, fn.bind(null, client, message));
                         }
-                        P.getPokemonByName(randomize);
-                        amount++;
+                    P.getPokemonByName(randomize);
+                        
                     }).catch(console.error);
                 }
             }, Math.random() * 2 * 1000);
