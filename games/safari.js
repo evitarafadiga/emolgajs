@@ -79,6 +79,45 @@ function init(client, message, safari_type = "default") {
         },
         poison: (response) => {
             return response.types.some(type => type.type.name === 'poison');
+        },
+        dark: (response) => {
+            return response.types.some(type => type.type.name === 'dark');
+        },
+        fairy: (response) => {
+            return response.types.some(type => type.type.name === 'fairy');
+        },
+        electric: (response) => {
+            return response.types.some(type => type.type.name === 'electric');
+        },
+        steel: (response) => {
+            return response.types.some(type => type.type.name === 'steel');
+        },
+        normal: (response) => {
+            return response.types.some(type => type.type.name === 'normal');
+        },
+        ice: (response) => {
+            return response.types.some(type => type.type.name === 'ice');
+        },
+        fighting: (response) => {
+            return response.types.some(type => type.type.name === 'fighting');
+        },
+        flying: (response) => {
+            return response.types.some(type => type.type.name === 'flying');
+        },
+        dragon: (response) => {
+            return response.types.some(type => type.type.name === 'dragon');
+        },
+        bug: (response) => {
+            return response.types.some(type => type.type.name === 'bug');
+        },
+        rock: (response) => {
+            return response.types.some(type => type.type.name === 'rock');
+        },
+        psychic: (response) => {
+            return response.types.some(type => type.type.name === 'psychic');
+        },
+        ground: (response) => {
+            return response.types.some(type => type.type.name === 'ground');
         }
     }
 

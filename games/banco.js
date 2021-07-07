@@ -52,7 +52,7 @@ function create(client, channel, owner) {
         attachment.setDescription(`O dado rolou o número ${dice + 1}!!!`)
         attachment.setImage(DICE_FACES[dice]);
     
-        let message = await channel.send(attachment);
+        let message = channel.send(attachment);
         setTimeout(()=>{message.delete()}, 3000);
     }
 
