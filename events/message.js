@@ -6,6 +6,12 @@ const Banco = require ("../games/banco.js")
 
 const Confess = require ("../commands/confess.js")
 
+const Mysteron = require ("../commands/mysteron.js")
+
+const Estojo = require ("../commands/estojo.js")
+
+const Eclode = require ("../commands/eclode.js")
+
 const prefix = "!"
 
 async function execute(client, message) {
@@ -35,6 +41,12 @@ async function execute(client, message) {
         if(comando === 'safari') Safari.init(client, message, args[0]);
 
         if(comando === 'banco') Banco.create(client, message.channel, message.author);
+
+        if(comando === 'seique') Mysteron.init(client, message, args);
+
+        if(comando === 'memostra') Estojo.init(client, message, args);
+
+        if(comando === 'eclode') Eclode.init(client, message, args[0]);
 
         if (message.content === "rip") {
             // Create the attachment using MessageAttachment

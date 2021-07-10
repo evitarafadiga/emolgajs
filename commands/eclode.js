@@ -1,69 +1,31 @@
 const Discord = require("discord.js")
 const Pokedex = require('pokedex-promise-v2');
 
-/*let options = {
-  protocol: 'https',
-  hostName: 'localhost:443',
-  versionPath: '/api/v2/',
-  cacheLimit: 100 * 1000, // 100s
-  timeout: 5 * 1000 // 5s
-}*/
 const P = new Pokedex(/*options*/);
 const POKEMON_AMOUNT = 898;
-const SECONDS = 30;
+const SECONDS = 5;
 
 const getRandomPokemon = () => {
     let id = (Math.random() * POKEMON_AMOUNT) | 0;
     return P.getPokemonByName(id);
 }
 
-const apresentOnChat = (response, message) => {
+const apresentOnChat = (response, message, egg_type) => {
 
     const attachment = new Discord.MessageEmbed();
-    attachment.setDescription(`Um ${response.name} selvagem apareceu!`);
+    attachment.setTitle('🥚');
+    attachment.setDescription(`O ovo ${egg_type} eclodiu em um(a) ${response.name}!`);
     attachment.setImage(response.sprites.front_default);
     message.channel.send(/*message.author,*/ attachment);
 }
 
-const startCapture = (client, message, onCapture) => {
+function init(client, message, egg_type = "comum") {
 
-    const text_to_validate = "peguei";
-    async function valid(message) {
-        
-        if(message.author.bot) return;
-        if(message.channel.type === "dm") return;
-
-        if(!message.content.toLowerCase().includes(text_to_validate)) return;
-        
-        const winner = message.author;
-        message.channel.send(`${winner} você pegou :D`);
-        /*message.react('🤔');*/
-        client.off('message', valid);
-        onCapture();
-    }
-
-    client.on('message', valid);
-}
-
-function init(client, message, safari_type = "default") {
-
-    safari_type = safari_type.toLowerCase();
+    egg_type = egg_type.toLowerCase();
 
     let filters = {
-        default: (response) => {
+        comum: (response) => {
             return true;
-        },
-        littlecup: (response) => {
-            if(response.base_experience < 100) return true;
-            return false;
-        },
-        notfullyevolved: (response) => {
-            if(response.base_experience > 95 && response.base_experience < 285) return true;
-            return false;
-        },
-        uber: (response) => {
-            if(response.base_experience > 285) return true;
-            return false;
         },
         water: (response) => {
             return response.types.some(type => type.type.name === 'water');
@@ -121,22 +83,36 @@ function init(client, message, safari_type = "default") {
         }
     }
 
-    const filter = filters[safari_type] || filters["default"];
-    console.log(safari_type, filter)
+    let secondFilters = {
+        comum: (response) => {
+            return true;
+        },
+        raro: (response) => {
+            if(response.base_experience > 95 && response.base_experience < 285) return true;
+            return false;
+        },
+        insano: (response) => {
+            if(response.base_experience > 285) return true;
+            return false;
+        }
+    }
+
+    
+    const filter = filters[egg_type] || secondFilters[egg_type] || filters["comum"];
+    console.log(egg_type, filter)
     
     const attachment = new Discord.MessageEmbed();
-    attachment.setTitle(`Iniciando rota ${safari_type}`);
+    attachment.setTitle(`Oh! Veja o que temos aqui... Um ovo ${egg_type}.`);
     message.channel.send(attachment);
 
-    let amount = 10;
+    let amount = 1;
     function fn() {
         if(amount--) {
             setTimeout(function intern_fn() {
                 getRandomPokemon()
                 .then(response => {
                     if(filter(response)) {
-                        apresentOnChat(response, message);
-                        startCapture(client, message, fn.bind(null, client, message));
+                        apresentOnChat(response, message, egg_type);
                     } else {
                         intern_fn();
                     }
@@ -145,8 +121,7 @@ function init(client, message, safari_type = "default") {
             
             return fn;
         } else {
-            attachment.setTitle(`Rota finalizada.`);
-            message.channel.send(attachment);
+            return;
         }
     }; fn();
 }
