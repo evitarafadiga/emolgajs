@@ -12,6 +12,8 @@ const Estojo = require ("../commands/estojo.js")
 
 const Eclode = require ("../commands/eclode.js")
 
+const TiroCerto = require ("../games/tirocerto.js")
+
 const prefix = "!"
 
 async function execute(client, message) {
@@ -33,20 +35,22 @@ async function execute(client, message) {
 
         }
 
-        if(comando === 'shutdown') {
+        if(comando === 'dorme') {
             console.log('Desligando...')
             client.destroy();
         }
 
-        if(comando === 'safari') Safari.init(client, message, args[0]);
+        if(comando === 'aosafari') Safari.init(client, message, args[0]);
 
-        if(comando === 'banco') Banco.create(client, message.channel, message.author);
+        if(comando === 'aobanco') Banco.create(client, message.channel, message.author);
 
         if(comando === 'seique') Mysteron.init(client, message, args);
 
         if(comando === 'memostra') Estojo.init(client, message, args);
 
         if(comando === 'eclode') Eclode.init(client, message, args[0]);
+
+        if(comando === 'tirocerto') TiroCerto.init(client, message, args);
 
         if (message.content === "rip") {
             // Create the attachment using MessageAttachment

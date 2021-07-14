@@ -15,7 +15,9 @@ function init (client, message, msg) {
                 'columbine vai matar quem se casar com ela',
                 'columbine vai destruir todos os reinos que encontrar',
                 'columbine é filha de jack, o estripador',
-                'columbine matou mais que jack, o estripador'];
+                'columbine matou mais que jack, o estripador',
+                'columbine é atiradora profissional',
+                'columbine fez 13 vítimas'];
     for (let index = 0; index < filters.length; index++) {
         const element = filters[index];
         const attachment = new Discord.MessageEmbed();
@@ -32,15 +34,15 @@ function init (client, message, msg) {
                     message.channel.send(attachment);
                     break;
                 case 2:
-                    attachment.setDescription(`Você acaba de receber um Ovo UU!`);
+                    attachment.setDescription(`Você acaba de receber um Ovo Raro! + Fita Mysteron!`);
                     message.channel.send(attachment);
                     break;
                 case 3:
-                    attachment.setDescription(`Você acaba de receber um Ovo OU!`);
+                    attachment.setDescription(`Você acaba de receber um Ovo Raro! + Fita Mysteron!`);
                     message.channel.send(attachment);
                     break;
                 case 4:
-                    attachment.setDescription(`Você acaba de receber um Ovo Raro!`);
+                    attachment.setDescription(`Você acaba de receber um Ovo Raro! + Fita Mysteron!`);
                     message.channel.send(attachment);
                     break;
                 case 5:
@@ -63,6 +65,12 @@ function init (client, message, msg) {
                     attachment.setDescription(`Você acaba de receber 5000 Tokens + Fita Mysteron!`);
                     message.channel.send(attachment);
                     break;
+                case 10:
+                    attachment.setDescription(`Você acaba de receber Ovo Raro + Fita Mysteron!`);
+                    message.channel.send(attachment);
+                case 11:
+                    attachment.setDescription(`Você acaba de receber Ovo Raro + Fita Mysteron!`);
+                    message.channel.send(attachment);
                 default:
                     break;
             }
