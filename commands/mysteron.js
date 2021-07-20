@@ -42,11 +42,11 @@ function init (client, message, msg) {
                     message.channel.send(attachment);
                     break;
                 case 4:
-                    attachment.setDescription(`Você acaba de receber um Ovo Raro! + Fita Mysteron!`);
+                    attachment.setDescription(`Você e sua família acabam de receber um Ovo Raro! + Fita Mysteron somente para você!`);
                     message.channel.send(attachment);
                     break;
                 case 5:
-                    attachment.setDescription(`Você acaba de receber um Ovo Uber + Fita Mysteron!`);
+                    attachment.setDescription(`Você e sua família acabam de receber um Ovo Raro! + Fita Mysteron somente para você!`);
                     message.channel.send(attachment);
                     break;
                 case 6:
