@@ -33,23 +33,24 @@ const startCapture = (client, message, onCapture, response, id) => {
     const text_to_validate = "pew";
 
     const failures = [
-        "Por Arceus!!! Isso é crime!",
-        "NÃOOOOOOOOOOOOOOOO!",
+        'Por Arceus!!! Isso é crime!',
+        'NÃOOOOOOOOOOOOOOOO!',
         `Um jovem ${response.name} não merecia isso...`,
-        ":loro:",
-        ":pavor:",
-        "Eu não acredito nisso... que vergonha!",
+        ':loro:',
+        ':pavor:',
+        `Eu não acredito nisso... que vergonha!`,
         `Coitadinho do pequeno ${response.name}...`,
-        "Sabe que não podia fazer essa lambança, né?",
-        "Arceus guie-o à luz...",
-        "Santa violência!",
-        "Que grosseria!",
-        "Barbaridade.",
+        `Sabe que não podia fazer essa lambança, né?`,
+        `Arceus guie-o à luz...`,
+        `Santa violência!`,
+        `Que grosseria!`,
+        `Barbaridade.`,
         `Um pobre ${response.name} foi passear...`,
-        "Não gente... Não! Não! Não! Não!",
-        "Sem condições de presenciar isso.",
+        `Não gente... Não! Não! Não! Não!`,
+        `Sem condições de presenciar isso.`,
         `Hoje é um pobre ${response.name}. Amanhã vai atirar... em mim?`,
-        "Você vai acertar as contas com Arceus por isso... Eu espero"
+        `Você vai acertar as contas com Arceus por isso... Eu espero`,
+        `:minhafilha:`
     ];
 
     async function valid(message) {
@@ -67,7 +68,7 @@ const startCapture = (client, message, onCapture, response, id) => {
         } 
         else {
             let compl = (Math.random() * failures.length) | 0;
-            message.channel.send(`${winner} cometeu um abate criminoso! ${failures[compl]}`);
+            message.channel.send(`${winner} cometeu um abate criminoso e fica sem atirar! ${failures[compl]}`);
         }
         
         /*message.react('🤔');*/

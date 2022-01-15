@@ -4,7 +4,7 @@ function init (client, message, msg) {
 
     msg = msg.join (' ').toLowerCase();
     console.log(`AUTOR: ${message.author.username} DIZ[${msg}]`);
-
+    
     let filters = [
                 'columbine é vaidosa',
                 'columbine é emotiva',
