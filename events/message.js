@@ -43,7 +43,7 @@ async function execute(client, message) {
 
         }
 
-        if(comando === 'd') {
+        if(comando === 'dorme') {
             console.log('Desligando...')
             client.destroy();
         }
@@ -52,7 +52,7 @@ async function execute(client, message) {
 
         if(comando === 'aobanco') Banco.create(client, message.channel, message.author);
 
-        //if(comando === 'seique') Mysteron.init(client, message, args);
+        if(comando === 'seique') Mysteron.init(client, message, args);
 
         //if(comando === 'memostra') Estojo.init(client, message, args);
 

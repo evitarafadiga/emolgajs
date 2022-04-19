@@ -3,7 +3,9 @@ const Pokedex = require('pokedex-promise-v2');
 
 const P = new Pokedex(/*options*/);
 
-const birds = [ '580', '334', '334', '334','580', '643','646','580','580','580','580','580','580','580','580','16', '17', '18', '84', '278', '333', '519', '722', '821','581','581','581', '581', '581', '581', '581', '581' ];
+const birds = [ '810', '1', '43', '69', '152', '167', '186', '251', '252', '271', 
+                '280', '315', '331', '387', '495', '722', '811', '812', '893',
+                '810', '810', '810', '810', '810', '810', '810', '810', '810'];
 
 const POKEMON_AMOUNT = 898;
 const SECONDS = 20;
@@ -62,8 +64,8 @@ const startCapture = (client, message, onCapture, response, id) => {
 
         const winner = message.author;
 
-        if(id === 581) {        
-        message.channel.send(`${winner} você abateu uma Swanna!`);
+        if(id === 810) {        
+        message.channel.send(`${winner} você abateu um Grookey febril! Ganha 100 Pontos!`);
 
         } 
         else {
@@ -83,7 +85,7 @@ const startCapture = (client, message, onCapture, response, id) => {
 function init(client, message) {
     
     const attachment = new Discord.MessageEmbed();
-    attachment.setTitle(`Carregando escopeta...`);
+    attachment.setTitle(`Carregando escopeta... Lembre-se; só é permitido atirar em Grookey`);
     message.channel.send(attachment);
 
     let amount = 9;
@@ -102,10 +104,10 @@ function init(client, message) {
                     }
                 }).catch(console.error);
             }, Math.random() * SECONDS * 1000);
-            console.log("Resta "+amount+" Pokémon.")
+            console.log("Resta(m) "+amount+" Pokémon.")
             return fn;
         } else {
-            attachment.setTitle(`Não aparece mais nada por aqui... Circulando.`);
+            attachment.setTitle(`Não aparece mais nada no termômetro... Circulando.`);
             message.channel.send(attachment);
         }
     }; fn();

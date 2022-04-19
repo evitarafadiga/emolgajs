@@ -1,7 +1,6 @@
 {
-  "name": "EmolgaJs",
+  "name": "emolgajs",
   "version": "1.0.0",
-  "description": "",
   "main": "index.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1"
@@ -12,6 +11,17 @@
   "dependencies": {
     "bot.js": "^0.0.1",
     "discord.js": "^12.5.3",
-    "pokedex-promise-v2": "^3.3.2"
-  }
+    "index.js": "^0.0.3",
+    "pokedex-promise-v2": "^3.3.2",
+    "validator": "^13.7.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/evitarafadiga/emolgajs.git"
+  },
+  "bugs": {
+    "url": "https://github.com/evitarafadiga/emolgajs/issues"
+  },
+  "homepage": "https://github.com/evitarafadiga/emolgajs#readme",
+  "description": ""
 }

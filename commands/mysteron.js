@@ -6,18 +6,18 @@ function init (client, message, msg) {
     console.log(`AUTOR: ${message.author.username} DIZ[${msg}]`);
     
     let filters = [
-                'columbine é vaidosa',
-                'columbine é emotiva',
-                'columbine matou 13 pessoas',
-                'columbine usou uma carabina no massacre',
-                'columbine é alérgica a fígado',
-                'columbine é admiradora de arte',
-                'columbine vai matar quem se casar com ela',
-                'columbine vai destruir todos os reinos que encontrar',
-                'columbine é filha de jack, o estripador',
-                'columbine matou mais que jack, o estripador',
-                'columbine é atiradora profissional',
-                'columbine fez 13 vítimas'];
+                'biscuit é fofoqueira',
+                'biscuit é my',
+                'biscuit é kpopper',
+                'biscuit é baseada na bruna marquezine',
+                'biscuit é baseada em bruna marquezine',
+                'biscuit é hacker',
+                'biscuit é top model',
+                'biscuit é modelo',
+                'biscuit é ex de american',
+                'biscuit é ex-namorada de american',
+                'biscuit é procurada',
+                'biscuit é foragida'];
     for (let index = 0; index < filters.length; index++) {
         const element = filters[index];
         const attachment = new Discord.MessageEmbed();
@@ -26,50 +26,50 @@ function init (client, message, msg) {
         if (msg === element) {      
             switch (index) {
                 case 0:
-                    attachment.setDescription(`Você acaba de receber um Ovo Fairy!`);
+                    attachment.setDescription(`Você acaba de receber um Ovo Lutador!`);
                     message.channel.send(attachment);
                     break;
                 case 1:
-                    attachment.setDescription(`Você acaba de receber um Ovo Dragon!`);
+                    attachment.setDescription(`Você acaba de receber um Ovo Normal!`);
                     message.channel.send(attachment);
                     break;
                 case 2:
-                    attachment.setDescription(`Você acaba de receber um Ovo Raro! + Fita Mysteron!`);
+                    attachment.setDescription(`Você acaba de receber um Ovo Fogo! + Pontos Mysteron!`);
                     message.channel.send(attachment);
                     break;
                 case 3:
-                    attachment.setDescription(`Você acaba de receber um Ovo Raro! + Fita Mysteron!`);
+                    attachment.setDescription(`Você acaba de receber um Ovo Gelo! + Pontos Mysteron!`);
                     message.channel.send(attachment);
                     break;
                 case 4:
-                    attachment.setDescription(`Você e sua família acabam de receber um Ovo Raro! + Fita Mysteron somente para você!`);
+                    attachment.setDescription(`Você e sua família acabam de receber um Ovo Venenoso! + Pontos Mysteron somente para você!`);
                     message.channel.send(attachment);
                     break;
                 case 5:
-                    attachment.setDescription(`Você e sua família acabam de receber um Ovo Raro! + Fita Mysteron somente para você!`);
+                    attachment.setDescription(`Você e sua família acabam de receber um Ovo Psíquico! + Pontos Mysteron somente para você!`);
                     message.channel.send(attachment);
                     break;
                 case 6:
-                    attachment.setDescription(`Você acaba de receber um Ovo Uber + Fita Mysteron!`);
+                    attachment.setDescription(`Você acaba de receber um Ovo OU + Pontos Mysteron!`);
                     message.channel.send(attachment);
                     break;
                 case 7:
-                    attachment.setDescription(`Você acaba de receber 2000 Tokens + Fita Mysteron!`);
+                    attachment.setDescription(`Você acaba de receber 200 Poké-Dollars + Pontos Mysteron!`);
                     message.channel.send(attachment);
                     break;
                 case 8:
-                    attachment.setDescription(`Você acaba de receber 5000 Tokens + Fita Mysteron!`);
+                    attachment.setDescription(`Você acaba de receber 500 Poké-Dollars + Pontos Mysteron!`);
                     message.channel.send(attachment);
                     break;
                 case 9:
-                    attachment.setDescription(`Você acaba de receber 5000 Tokens + Fita Mysteron!`);
+                    attachment.setDescription(`Você acaba de receber 1000 Poké-Dollars + Pontos Mysteron!`);
                     message.channel.send(attachment);
                     break;
                 case 10:
-                    attachment.setDescription(`Você acaba de receber Ovo Raro + Fita Mysteron!`);
+                    attachment.setDescription(`Você acaba de receber Ovo Uber + Pontos Mysteron!`);
                     message.channel.send(attachment);
                 case 11:
-                    attachment.setDescription(`Você acaba de receber Ovo Raro + Fita Mysteron!`);
+                    attachment.setDescription(`Você acaba de receber Ovo Uber + Pontos Mysteron!`);
                     message.channel.send(attachment);
                 default:
                     break;
