@@ -72,6 +72,8 @@ async function execute(client, message) {
 
         if(comando === 'saldo') Saldo.init(client, message, message.author);
 
+        if(comando === 'criaficha') Saldo.register(client, message, message.author);
+
         if (message.content === "rip") {
             // Create the attachment using MessageAttachment
             const attachment = new Discord.MessageAttachment('https://i.imgur.com/w3duR07.png');

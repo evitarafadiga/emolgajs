@@ -11,9 +11,8 @@ function init (client, message, owner) {
         // , user: {} 
     })
     .write()
-
-    const newUser = db.get('users').size().value();
-    const founded = db.get('users').find({ name: owner.username }).value()    
+    
+    const founded = db.get('users').find({ discordId: owner.id }).value()    
 
     if (founded) {
         const attachment = new Discord.MessageEmbed();  
@@ -27,6 +26,38 @@ function init (client, message, owner) {
         attachment.setTitle('💵 Erro! 💵');
         attachment.setDescription(`Usuário não encontrado.`);
         attachment.setColor('#E83845');
+        message.channel.send(attachment);
+    };        
+        
+}
+
+function register (client, message, owner) {   
+    
+    const userSize = db.get('users').size().value();
+    
+    const founded = db.get('users').find({ discordId: owner.id }).value()    
+
+    if (founded) {
+        const attachment = new Discord.MessageEmbed();
+        attachment.setDescription(`Você ${owner} já possui uma ficha.`);
+        attachment.setColor('#E389B9');
+        message.channel.send(attachment);
+        console.log(founded)
+    } else {
+
+        // Add a post
+        db.get('users')
+        .push({ 
+        id: userSize+1, 
+        name : owner.username,
+        discordId: owner.id,
+        currency: 0
+        })
+        .write()
+        
+        const attachment = new Discord.MessageEmbed();
+        attachment.setDescription(`Usuário ${owner} cadastrado com sucesso!`);
+        attachment.setColor('#288BA8');
         message.channel.send(attachment);
     };
         
@@ -46,4 +77,4 @@ function init (client, message, owner) {
     
 }
 
-module.exports = { init }
+module.exports = { init, register }
