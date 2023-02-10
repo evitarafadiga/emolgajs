@@ -22,6 +22,8 @@ const Banners = require ("../games/banners.js")
 
 const Three = require ("../games/three.js")
 
+const Saldo = require ("../commands/currency.js")
+
 const prefix = "!"
 
 async function execute(client, message) {
@@ -68,11 +70,25 @@ async function execute(client, message) {
 
         if(comando === 'banner') Banners.init(client, message, args[0]);
 
+        if(comando === 'saldo') Saldo.init(client, message, message.author);
+
         if (message.content === "rip") {
             // Create the attachment using MessageAttachment
             const attachment = new Discord.MessageAttachment('https://i.imgur.com/w3duR07.png');
             // Send the attachment in the message channel with a content
             message.channel.send(`${message.author},`, attachment);
+        }
+        if (message.content === 'samba') {
+            const attachment = new Discord.MessageAttachment('https://imgur.com/7ZLLxBq');
+        }
+        if (message.content === 'bate') {
+            const attachment = new Discord.MessageAttachment('https://imgur.com/ht68XNM');
+        }
+        if (message.content === 'reclama') {
+            const attachment = new Discord.MessageAttachment('https://imgur.com/3POuZQY');
+        }
+        if (message.content === 'rebola') {
+            const attachment = new Discord.MessageAttachment('https://imgur.com/xwHjqu0');
         }
     }
 }

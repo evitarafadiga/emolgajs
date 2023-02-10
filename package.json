@@ -12,6 +12,7 @@
     "bot.js": "^0.0.1",
     "discord.js": "^12.5.3",
     "index.js": "^0.0.3",
+    "lowdb": "^1.0.0",
     "pokedex-promise-v2": "^3.3.2",
     "validator": "^13.7.0"
   },
