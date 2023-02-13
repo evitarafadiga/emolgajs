@@ -1,5 +1,7 @@
 const Discord = require ("discord.js")
 
+const narratorId = "933145667839328336";
+
 const Safari = require ("../games/safari.js")
 
 const Banco = require ("../games/banco.js")
@@ -28,7 +30,7 @@ const prefix = "!"
 
 async function execute(client, message) {
 
-    if(message.author.bot) return;
+    if(message.author.bot) return;    
 
     const args = message.content.slice(prefix.length).trim().split(/ +/g);
     const comando = args.shift().toLowerCase();
@@ -45,10 +47,20 @@ async function execute(client, message) {
 
         }
 
-        if(comando === 'dorme') {
-            console.log('Desligando...')
-            client.destroy();
-        }
+        if(message.author.id === narratorId) {
+
+            if(comando === 'give') Saldo.give(client, message, args);
+
+            if(comando === 'take') Saldo.take(client, message, args);
+
+            if(comando === 'stats') Saldo.stats(client, message, args);
+
+            if(comando === 'dorme') {
+                console.log('Desligando...')
+                client.destroy();
+            }
+
+        }        
 
         if(comando === 'aosafari') Safari.init(client, message, args[0]);
 
