@@ -46,14 +46,14 @@ async function execute(client, message) {
             m.edit(`Pong!! Latência de ${m.createdTimestamp - message.createdTimestamp}ms. A Latência da API é ${Math.round(client.ping)}ms.`);
 
         }
-
+        
         if(message.author.id === narratorId) {
+            
+            if(comando === 'banner') Banners.init(client, message, args);
 
             if(comando === 'give') Saldo.give(client, message, args);
 
-            if(comando === 'take') Saldo.take(client, message, args);
-
-            if(comando === 'stats') Saldo.stats(client, message, args);
+            if(comando === 'take') Saldo.take(client, message, args);            
 
             if(comando === 'dorme') {
                 console.log('Desligando...')
@@ -80,11 +80,13 @@ async function execute(client, message) {
 
         if(comando === 'vouf') Vouf.init(client, message, args[0]);
 
-        if(comando === 'banner') Banners.init(client, message, args[0]);
-
         if(comando === 'saldo') Saldo.init(client, message, message.author);
 
         if(comando === 'criaficha') Saldo.register(client, message, message.author);
+
+        if(comando === 'poke') Saldo.poke(client, message, args);
+
+        if(comando === 'ficha') Saldo.stats(client, message, message.author);
 
         if (message.content === "rip") {
             // Create the attachment using MessageAttachment
