@@ -20,7 +20,7 @@ function init (client, message, owner) {
         attachment.setDescription(`Olá ${owner}, seu saldo é de: ${founded.currency}`);
         attachment.setColor('#EFC201');
         message.channel.send(attachment);
-        console.log(founded)
+        // console.log(founded)
     } else {
         const attachment = new Discord.MessageEmbed();  
         attachment.setTitle('Erro');
@@ -38,13 +38,14 @@ function stats (client, message, owner) {
     .find({ discordId: owner.id })
     .value()
         
-    console.log(founded)
+    // console.log(founded)
 
     if (founded) {
         const attachment = new Discord.MessageEmbed();  
         // attachment.setTitle('💵 SALDO 💵');
-        attachment.setDescription(`Olá ${owner}, seu saldo é de: ${founded.currency}`);
-        attachment.setFooter(`${founded.party.map(element => element.name).join(" | ")}`);
+        attachment.setDescription(`${owner} - - - - - - - - - - - - - - - - - - 🪙 ${founded.currency}`);
+        attachment.setFooter(`I N S Í G N I A S \n ${founded.badges.map(element => element.name).join(" | ")}
+        E Q U I P E \n ${founded.party.map(element => element.name).join(" | ")}`);
         attachment.setColor('#EFC201');
         message.channel.send(attachment);
 
@@ -59,11 +60,6 @@ function stats (client, message, owner) {
 }
 
 function give (client, message, receptors) {
-
-    db.defaults({ users: []
-        // , user: {} 
-    })
-    .write()
 
     let receivedError = [];
 
@@ -93,10 +89,12 @@ function give (client, message, receptors) {
         };        
     });
 
-    const attachment = new Discord.MessageEmbed();
-    attachment.setDescription(`Pix enviado!`);
-    attachment.setColor('#288BA8');
-    message.channel.send(attachment);
+    message.react('🆗')
+    
+    // const attachment = new Discord.MessageEmbed();
+    // attachment.setDescription(`Pix enviado!`);
+    // attachment.setColor('#288BA8');
+    // message.channel.send(attachment);
 
     if(receivedError > 0) {
 
@@ -109,8 +107,7 @@ function give (client, message, receptors) {
         attachment.setColor('#E83845');
         message.channel.send(attachment);
     }
-  
-    db.getState()
+
 }
 
 function take (client, message, receptors) {
@@ -148,10 +145,12 @@ function take (client, message, receptors) {
         };        
     });
 
-    const attachment = new Discord.MessageEmbed();
-    attachment.setDescription(`Pix cobrado!`);
-    attachment.setColor('#288BA8');
-    message.channel.send(attachment);
+    message.react('🆗')
+
+    // const attachment = new Discord.MessageEmbed();
+    // attachment.setDescription(`Pix cobrado!`);
+    // attachment.setColor('#288BA8');
+    // message.channel.send(attachment);
 
     if(receivedError > 0) {
 
@@ -164,8 +163,7 @@ function take (client, message, receptors) {
         attachment.setColor('#E83845');
         message.channel.send(attachment);
     }
-  
-    db.getState()
+
 }
 
 function poke (client, message, receptors) {
@@ -181,10 +179,10 @@ function poke (client, message, receptors) {
 
         element = element.toLowerCase();
 
-        console.log(element)
+        // console.log(element)
 
         const founded = db.get('users').find({ discordId: message.author.id }).value()
-        console.log(founded)
+        // console.log(founded)
 
         if (founded) {
 
@@ -194,7 +192,7 @@ function poke (client, message, receptors) {
             .get('party')
             .value();
 
-            if (party.length > 6) party.shift();
+            if (party.length > 5) party.shift();
 
             party.push({ name: element });
 
@@ -210,10 +208,12 @@ function poke (client, message, receptors) {
         };        
     });
 
-    const attachment = new Discord.MessageEmbed();
-    attachment.setDescription(`Ficha atualizada!`);
-    attachment.setColor('#288BA8');
-    message.channel.send(attachment);
+    message.react('🆗')
+
+    // const attachment = new Discord.MessageEmbed();
+    // attachment.setDescription(`Ficha atualizada!`);
+    // attachment.setColor('#288BA8');
+    // message.channel.send(attachment);
 
     if(receivedError > 0) {
 
@@ -227,10 +227,69 @@ function poke (client, message, receptors) {
         message.channel.send(attachment);
     }
   
-    db.getState()
+}
+
+function unpoke (client, message, num) {
+
+    const amount = parseInt(num, 10);    
+
+    let receivedError = [];
+
+    const founded = db.get('users').find({ discordId: message.author.id }).value()
+    // console.log(founded)
+
+    for (let index = 0; index < amount; index++) {
+        
+        if (founded) {
+
+            let party = db
+            .get('users')
+            .find({ discordId: founded.discordId })
+            .get('party')
+            .value();
+
+            if (party.length > 0) party.pop();
+
+            db.get('users')
+            .find({ discordId: founded.discordId })
+            .assign({ party })
+            .write();
+            
+        } else {
+        
+            receivedError.push(element)
+            // console.log(receivedError)        
+        };  
+        
+    }
+
+    message.react('🆗')
+
+    // const attachment = new Discord.MessageEmbed();
+    // attachment.setDescription(`Ficha atualizada!`);
+    // attachment.setColor('#288BA8');
+    // message.channel.send(attachment);
+
+    if(receivedError > 0) {
+
+        let str = [];
+        receivedError.forEach(element => {
+            str.push(element)            
+        })
+        const attachment = new Discord.MessageEmbed();
+        attachment.setDescription(`Usuários ${str} não encontrados.`);
+        attachment.setColor('#E83845');
+        message.channel.send(attachment);
+    }
+  
 }
 
 function register (client, message, owner) {   
+
+    db.defaults({ users: []
+        // , user: {} 
+    })
+    .write()
     
     const userSize = db.get('users').size().value();
     
@@ -252,7 +311,8 @@ function register (client, message, owner) {
         name : nickname,
         discordId: owner.id,
         currency: 0,
-        party: []
+        party: [],
+        badges: []
         })
         .write()
         
@@ -264,4 +324,67 @@ function register (client, message, owner) {
       
 }
 
-module.exports = { init, register, give, take, poke, stats }
+function badge (client, message, receptors) {
+
+    db.defaults({ users: []
+        // , user: {} 
+    })
+    .write()
+
+    let receivedError = []; 
+
+    receptors.forEach(element => {
+
+        element = element.toLowerCase();
+
+        // console.log(element)
+
+        const founded = db.get('users').find({ discordId: message.author.id }).value()
+        // console.log(founded)
+
+        if (founded) {
+
+            let badges = db
+            .get('users')
+            .find({ discordId: founded.discordId })
+            .get('badges')
+            .value();
+
+            if (badges.length > 3) badges.shift();
+
+            badges.push({ name: element });
+
+            db.get('users')
+            .find({ discordId: founded.discordId })
+            .assign({ badges })
+            .write();
+            
+        } else {
+        
+            receivedError.push(element)
+            // console.log(receivedError)        
+        };        
+    });
+
+    message.react('🆗')
+
+    // const attachment = new Discord.MessageEmbed();
+    // attachment.setDescription(`Ficha atualizada!`);
+    // attachment.setColor('#288BA8');
+    // message.channel.send(attachment);
+
+    if(receivedError > 0) {
+
+        let str = [];
+        receivedError.forEach(element => {
+            str.push(element)            
+        })
+        const attachment = new Discord.MessageEmbed();
+        attachment.setDescription(`Usuários ${str} não encontrados.`);
+        attachment.setColor('#E83845');
+        message.channel.send(attachment);
+    }
+  
+}
+
+module.exports = { init, register, give, take, poke, unpoke, stats, badge }

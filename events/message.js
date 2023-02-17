@@ -3,27 +3,16 @@ const Discord = require ("discord.js")
 const narratorId = "933145667839328336";
 
 const Safari = require ("../games/safari.js")
-
 const Banco = require ("../games/banco.js")
-
 const Confess = require ("../commands/confess.js")
-
 const Mysteron = require ("../commands/mysteron.js")
-
 const Estojo = require ("../commands/estojo.js")
-
 const Eclode = require ("../commands/eclode.js")
-
 const TiroCerto = require ("../games/tirocerto.js")
-
 const Card = require ("../games/card.js")
-
 const Vouf = require ("../games/vouf.js")
-
 const Banners = require ("../games/banners.js")
-
 const Three = require ("../games/three.js")
-
 const Saldo = require ("../commands/currency.js")
 
 const prefix = "!"
@@ -87,6 +76,10 @@ async function execute(client, message) {
         if(comando === 'poke') Saldo.poke(client, message, args);
 
         if(comando === 'ficha') Saldo.stats(client, message, message.author);
+
+        if(comando === 'unpoke') Saldo.unpoke(client, message, args[0]);
+
+        if(comando === 'badge') Saldo.badge(client, message, args);
 
         if (message.content === "rip") {
             // Create the attachment using MessageAttachment
