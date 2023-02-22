@@ -14,6 +14,7 @@ const Vouf = require ("../games/vouf.js")
 const Banners = require ("../games/banners.js")
 const Three = require ("../games/three.js")
 const Saldo = require ("../commands/currency.js")
+const Help = require ("../commands/help.js")
 
 const prefix = "!"
 
@@ -81,6 +82,8 @@ async function execute(client, message) {
 
         if(comando === 'badge') Saldo.badge(client, message, args);
 
+        if(comando === 'ajuda') Help.init(client, message);
+
         if (message.content === "rip") {
             // Create the attachment using MessageAttachment
             const attachment = new Discord.MessageAttachment('https://i.imgur.com/w3duR07.png');
@@ -88,16 +91,20 @@ async function execute(client, message) {
             message.channel.send(`${message.author},`, attachment);
         }
         if (message.content === 'samba') {
-            const attachment = new Discord.MessageAttachment('https://imgur.com/7ZLLxBq');
+            const attachment = new Discord.MessageAttachment('https://i.imgur.com/7ZLLxBq.gif');
+            message.channel.send(`${message.author},`, attachment);
         }
         if (message.content === 'bate') {
-            const attachment = new Discord.MessageAttachment('https://imgur.com/ht68XNM');
+            const attachment = new Discord.MessageAttachment('https://i.imgur.com/ht68XNM.gif');
+            message.channel.send(`${message.author},`, attachment);
         }
         if (message.content === 'reclama') {
-            const attachment = new Discord.MessageAttachment('https://imgur.com/3POuZQY');
+            const attachment = new Discord.MessageAttachment('https://i.imgur.com/3POuZQY.gif');
+            message.channel.send(`${message.author},`, attachment);
         }
         if (message.content === 'rebola') {
-            const attachment = new Discord.MessageAttachment('https://imgur.com/xwHjqu0');
+            const attachment = new Discord.MessageAttachment('https://i.imgur.com/xwHjqu0.gif');
+            message.channel.send(`${message.author},`, attachment);
         }
     }
 }

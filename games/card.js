@@ -50,19 +50,19 @@ const TABLE = [
     createi("Você acaba de receber um Raikou!","O Trovão", 43, 'https://i.pinimg.com/236x/b0/72/ab/b072ab8023d60b37f5fcc7727cedd286.jpg'),
     createi("Evolua um pokémon seu e de um amigo!","O Tempo", 44, 'https://i.pinimg.com/236x/d6/dd/8b/d6dd8b3e6058943a4076c8daebaaf2d8.jpg'),
     createi("Proteja um pokémon seu e de um amigo de qualquer efeito de cartas, até o fim do RPG.","O Escudo", 45, 'https://i.pinimg.com/236x/d6/e9/76/d6e9766bc73d1c430992f3462b7afc9a.jpg'),
-    createi("Mate um pokémon seu e de dois inimigos.","A Espada", 46, 'https://i.pinimg.com/236x/68/8a/c1/688ac1cea08ad6c010dde7a5b20ef545.jpg'),
+    createi("Mate um pokémon seu e de um inimigo.","A Espada", 46, 'https://i.pinimg.com/236x/68/8a/c1/688ac1cea08ad6c010dde7a5b20ef545.jpg'),
     createi("Escolha qualquer pokémon do tipo Grama para você e um amigo.","A Madeira", 47, 'https://i.pinimg.com/236x/83/e9/fd/83e9fdd5680316a9ff681439a922f31e.jpg'),
-    createi("Você acaba de receber um Gyarados! Sem mega pedra.","O Suculento", 48, 'https://i.pinimg.com/236x/8b/c0/d2/8bc0d280349731582719f9c01f0ff6be.jpg'),
-    createi("Você acaba de receber um Gengar! Sem mega pedra.","A Sombra", 49, 'https://i.pinimg.com/236x/82/a0/66/82a0667a520994aeb9b49600205b1cd5.jpg'),
+    createi("Você acaba de receber um Magikarp!","O Suculento", 48, 'https://i.pinimg.com/236x/8b/c0/d2/8bc0d280349731582719f9c01f0ff6be.jpg'),
+    createi("Você acaba de receber um Haunter!","A Sombra", 49, 'https://i.pinimg.com/236x/82/a0/66/82a0667a520994aeb9b49600205b1cd5.jpg'),
     createi("Escolha, no primeiro estágio, qualquer pokémon que tenha No Guard de ability","O Vôo", 50, 'https://i.pinimg.com/236x/cf/51/59/cf51596cbf3ad9553248c7a246372f79.jpg'),
     createi("Clame por um lendário que te visitará no torneio","A Evocação", 51, 'https://i.pinimg.com/236x/1a/e5/7d/1ae57d1b3bc9c4f56255fcb832f82c87.jpg'),
     createi("Anule os efeitos de carta usados em você ou em um amigo.","A Chave", 52, 'https://i.pinimg.com/236x/46/72/e7/4672e7e0f22bdf2bb3bf0ea67720d96a.jpg'),
     createi("Congele a evolução do pokémon de dois inimigos para sempre!","A Destruição", 53, 'https://i.pinimg.com/236x/a5/20/8a/a5208a572bd900275e4b7e577af3473e.jpg'),
     createi("Desafie um treinador para uma batalha National Dex com Gmax. O vencedor recebe um pokémon do perdedor forçadamente.","O Fio", 54, 'https://i.pinimg.com/236x/73/60/ff/7360fffff55f4001f55f600276fb7f51.jpg'),
-    createi("Corte 100 pontos de um inimigo de maneira secreta. Use o confess.","A Tesoura", 55, 'https://i.pinimg.com/236x/a2/ab/76/a2ab7651fe88fdcd646407929f94dffe.jpg'),
-    createi("Distribua 100 pontos para dois amigos, e receba 100 pontos.","A Lua", 56, 'https://i.pinimg.com/236x/e8/e2/dd/e8e2dd082d42d23af5479cda06035ffb.jpg'),
-    createi("Escolha, no primeiro estágio, qualquer pokémon que existiu em Hisui.","O Old", 57, 'https://i.pinimg.com/236x/d7/2c/53/d72c53a5d728b44048a666f7a8a2d8d0.jpg'),
-    createi("Faça a, e somente, a ação que quiser.","O Deus", 58, 'https://i.pinimg.com/236x/58/c4/b6/58c4b624e3378b0013f7b427896cea3b.jpg')
+    createi("Escolha qualquer pokémon que aprenda Cut, em seu estágio inicial de evolução.","A Tesoura", 55, 'https://i.pinimg.com/236x/a2/ab/76/a2ab7651fe88fdcd646407929f94dffe.jpg'),
+    createi("Distribua 100 Tokens para dois amigos, e receba 100 Tokens.","A Lua", 56, 'https://i.pinimg.com/236x/e8/e2/dd/e8e2dd082d42d23af5479cda06035ffb.jpg'),
+    createi("Escolha, no primeiro estágio, qualquer pokémon que tenha uma barba.","O Velhaco", 57, 'https://i.pinimg.com/236x/d7/2c/53/d72c53a5d728b44048a666f7a8a2d8d0.jpg'),
+    createi("Faça, e somente, a ação que quiser.","O Deus", 58, 'https://i.pinimg.com/236x/58/c4/b6/58c4b624e3378b0013f7b427896cea3b.jpg')
 ];
 
 const rollDice = () => {
